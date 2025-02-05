@@ -1,24 +1,42 @@
 package org.kmp.minesweeper
 
-import androidx.compose.foundation.layout.Column
-import androidx.compose.foundation.layout.fillMaxWidth
-import androidx.compose.material.Button
 import androidx.compose.material.MaterialTheme
-import androidx.compose.material.Text
 import androidx.compose.runtime.*
-import androidx.compose.ui.Alignment
-import androidx.compose.ui.Modifier
+import androidx.navigation.compose.NavHost
+import androidx.navigation.compose.rememberNavController
 import org.jetbrains.compose.ui.tooling.preview.Preview
+import org.kmp.minesweeper.feature.highScores.HighScores
+import org.kmp.minesweeper.feature.highScores.highScoresRoutes
+import org.kmp.minesweeper.feature.menu.Menu
+import org.kmp.minesweeper.feature.menu.menuRoutes
+import org.koin.compose.KoinApplication
+import org.koin.core.module.Module
 
 
 @Composable
 @Preview
-fun App() {
-    MaterialTheme {
-        var showContent by remember { mutableStateOf(false) }
-        Column(Modifier.fillMaxWidth(), horizontalAlignment = Alignment.CenterHorizontally) {
-            Button(onClick = { showContent = !showContent }) {
-                Text("Click me!")
+fun App(
+    platformModule: Module = Module(),
+) {
+    KoinApplication(
+        application = {
+            modules(appModule, platformModule)
+        }
+    ) {
+        MaterialTheme {
+            val navController = rememberNavController()
+            NavHost(
+                navController = navController,
+                startDestination = Menu,
+            ) {
+                menuRoutes(
+                    goToPlay = {},
+                    goToHighScores = {
+                        navController.navigate(HighScores)
+                    },
+                    goToSettings = {},
+                )
+                highScoresRoutes()
             }
         }
     }
