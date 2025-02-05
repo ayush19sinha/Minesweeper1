@@ -23,6 +23,7 @@ kotlin{
 
         commonMain.dependencies {
             implementation(projects.data.settings)
+            implementation(libs.koin.core)
 
         }
 

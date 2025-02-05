@@ -26,6 +26,7 @@ kotlin{
             implementation(projects.data.game)
             implementation(projects.data.settings)
 
+            implementation(libs.koin.core)
         }
 
     }

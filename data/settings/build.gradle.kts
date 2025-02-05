@@ -33,6 +33,7 @@ kotlin{
 
         commonMain.dependencies {
             implementation(projects.data.core)
+            implementation(libs.koin.core)
 
         }
 
