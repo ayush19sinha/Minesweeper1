@@ -32,9 +32,9 @@ kotlin{
         commonMain.dependencies {
             implementation(libs.koin.core)
             implementation(libs.datastore.preferences.core)
+            implementation(libs.bundles.kotlin)
 
         }
-
     }
 }
 

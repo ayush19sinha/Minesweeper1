@@ -11,4 +11,4 @@ fun createDataStore(
     produceFile = { producePath().toPath() }
 )
 
-const val dataStoreFileName = "minesweeperk.preferences_pb"
+const val dataStoreFileName = "minesweeper.preferences_pb"

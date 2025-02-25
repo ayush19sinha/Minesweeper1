@@ -9,6 +9,8 @@ import org.kmp.minesweeper.feature.highScores.HighScores
 import org.kmp.minesweeper.feature.highScores.highScoresRoutes
 import org.kmp.minesweeper.feature.menu.Menu
 import org.kmp.minesweeper.feature.menu.menuRoutes
+import org.kmp.minesweeper.feature.settings.Settings
+import org.kmp.minesweeper.feature.settings.settingsRoutes
 import org.koin.compose.KoinApplication
 import org.koin.core.module.Module
 
@@ -34,9 +36,12 @@ fun App(
                     goToHighScores = {
                         navController.navigate(HighScores)
                     },
-                    goToSettings = {},
+                    goToSettings = {
+                        navController.navigate(Settings)
+                    },
                 )
                 highScoresRoutes()
+                settingsRoutes()
             }
         }
     }
